@@ -29,6 +29,7 @@ Route::group(['prefix' => 'cardset', 'middleware' =>'auth'], function() {
 });
 
 Route::group(['prefix' => 'cardcolor', 'middleware' =>'auth'], function() {
-  Route::post('create/{cardset_id}', 'CardcolorController@createPage');
+  Route::get('create/{cardset_id}', 'CardcolorController@createPage');
   Route::post('create-color', 'CardColorController@create');
+  Route::get('edit/{color_id}', 'CardcolorController@editPage');
 });

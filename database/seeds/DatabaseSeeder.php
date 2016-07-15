@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
 
         // These particular seeders will only work if the database if empty
         $this->call(CardColorSeeder::class);
-        //$this->call(CardTypeSeeder::class);
+        $this->call(CardTypeSeeder::class);
     }
 }

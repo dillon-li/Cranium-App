@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Storage;
 
 use App\CardSet;
 use App\CardColor;
@@ -45,9 +46,11 @@ class CardsetController extends Controller
     {
       $cardset = CardSet::where('id', $id)->first();
       $cardcolors = CardColor::where('set_id', $cardset->id)->get();
+      $color_img = storage_path('DoABarrelRoll/testing-uploads.jpg');
       $items = [
         'cardset' => $cardset,
-        'cardcolors' => $cardcolors
+        'cardcolors' => $cardcolors,
+        'color_img' => $color_img
       ];
       if ($cardcolors->count() > 0) {
         foreach ($cardcolors as $color) {

@@ -24,6 +24,7 @@
                                 {{$color->color}} : {{$color->title}}<br>
                                 <a href="/cardcolor/edit/{{$color->id}}">Edit</a><br>
                                 <a href="/cardcolor/delete/{{$color->id}}" onclick="return confirm('Click OK to confirm deletion')">Delete</a>
+                                <img src="{{ url('users/{Auth::user()->username}/{$color->color}')}}">
                                 </td>
                                 @if ($cardtype_count[$color->id] == 1)
                                   <td>

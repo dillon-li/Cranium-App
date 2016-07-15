@@ -7,14 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create Card Color for {{$cardset->name}}</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/cardcolor/create-color') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/cardcolor/create-color') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Card Color</label>
+                            <label class="col-md-4 control-label">Card Color</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="color" value="{{ old('color') }}" placeholder="ex. Red, Blue, etc.">
+                                <input type="text" class="form-control" name="color" value="{{ old('color') }}" placeholder="ex. Red, Blue, etc.">
 
                                 @if ($errors->has('color'))
                                     <span class="help-block">
@@ -25,10 +25,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Color Title</label>
+                            <label class="col-md-4 control-label">Color Title</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="ex. Word Worm, Creative Cat">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="ex. Word Worm, Creative Cat">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -36,6 +36,20 @@
                                     </span>
                                 @endif
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-md-4 control-label">Add a picture for your color. Like this creative cat for blue:</label>
+                          <div class="col-md-6">
+                            <img src="{{ url('/images/creative_cat.jpg')}}">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-md-4 control-label">Upload Image (optional):</label>
+                          <div class="col-md-6">
+                            <input type="file" name="color_img">
+                          </div>
                         </div>
 
                         <input type="hidden" name="set_id" value="{{$cardset->id}}" />

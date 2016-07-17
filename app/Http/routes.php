@@ -32,4 +32,10 @@ Route::group(['prefix' => 'cardcolor', 'middleware' =>'auth'], function() {
   Route::get('create/{cardset_id}', 'CardcolorController@createPage');
   Route::post('create-color', 'CardColorController@create');
   Route::get('edit/{color_id}', 'CardcolorController@editPage');
+  Route::post('edit', 'CardcolorController@edit');
+  Route::get('delete/{color_id}', 'CardcolorController@delete');
+});
+
+Route::group(['prefix' => 'cardtype', 'middleware' =>'auth'], function() {
+  Route::get('create/{color_id}', 'CardtypeController@createPage');
 });

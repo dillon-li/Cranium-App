@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use File;
 
 use App\User;
 use App\CardSet;
 use App\CardColor;
+use App\CardType;
 
-class CardcolorController extends Controller
+class CardtypeController extends Controller
 {
-    public function createPage($cardset_id)
+    public function createPage($cardcolor_id)
     {
-      $cardset = CardSet::where('id', $cardset_id)->first();
+      $cardcolor = CardColor::where('id', $cardcolor_id)->first();
       $items = [
-        'cardset' => $cardset
+        'cardcolor' => $cardcolor
       ];
-      return view('cardcolors.create')->with($items);
+      return view('cardtypes.create')->with($items);
     }
 
     public function create(Request $request)

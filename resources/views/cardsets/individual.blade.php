@@ -24,22 +24,9 @@
                                 {{$color->color}} : {{$color->title}}<br>
                                 <a href="/cardcolor/edit/{{$color->id}}">Edit</a><br>
                                 <a href="/cardcolor/delete/{{$color->id}}" onclick="return confirm('Click OK to confirm deletion')">Delete</a>
-                                <img src="{{ url('users/{Auth::user()->username}/{$color->color}')}}">
+                                <br>
+                                <img src="{{ '/users/'.$user->username.'/'.str_slug($color->color).'.jpg' }}" alt="">
                                 </td>
-                                @if ($cardtype_count[$color->id] == 1)
-                                  <td>
-                                    No card types currently in this color. Make One: <br>
-                                    <a href="/cardtype/create/{{$color->id}}">
-                                        <button type="button" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-pencil-square-o"></i> Create Card Type
-                                        </button>
-                                    </a>
-                                  </td>
-                                  <td>
-                                    None to take
-                                  </td>
-                                </tr>
-                                @endif
                               @foreach ($cardtypes[$color->id] as $type)
                                 @if ($type->color_id == $color->id)
                                   <td>{{$type->title}}</td>
@@ -58,7 +45,12 @@
                                 </tr>
                                 @endif
                               @endforeach
-                              <td>Create a new type for this color</td>
+                              <td>
+                                @if ($cardtype_count[$color->id] == 1)
+                                  There are no types current for this color<br>
+                                @endif
+                                Create a new type for this color
+                              </td>
                               <td>
                                 <a href="/cardtype/create/{{$type->id}}">
                                     <button type="button" class="btn btn-primary">

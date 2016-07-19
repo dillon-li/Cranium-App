@@ -9,6 +9,8 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/cardset/create') }}">
                         {{ csrf_field() }}
+                        This will be your entire playset of cards. You are simply giving it a name, so that you
+                        can easily distinguish which cardset you want. <br><br>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Cardset Name</label>

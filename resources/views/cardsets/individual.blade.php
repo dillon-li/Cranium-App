@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">{{$cardset->name}}</div>
+                <div class="panel-heading">Cardset: {{$cardset->name}}</div>
                 @if ($cardcolors->count() > 0)
                   <div class="panel-body">
                     <div class="table-responsive">
@@ -13,7 +13,8 @@
                         <thead>
                           <tr>
                             <td>Card Color</td>
-                            <td>Card Type</td>
+                            <td>Card Type<br>(Click to view cards)</td>
+                            <td>Instruction</td>
                             <td>Action</td>
                           </tr>
                         </thead>
@@ -25,11 +26,16 @@
                                 <a href="/cardcolor/edit/{{$color->id}}">Edit</a><br>
                                 <a href="/cardcolor/delete/{{$color->id}}" onclick="return confirm('Click OK to confirm deletion')">Delete</a>
                                 <br>
-                                <img src="{{ '/users/'.$user->username.'/'.str_slug($color->color).'.jpg' }}" alt="">
+                                @if ($color->hasImg)
+                                  <img alt=" " src="{{ '/users/'.$user->username.'/'.str_slug($color->color).'.jpg' }}" style="width:150px; height:300px">
+                                  <br>
+                                    <a href="/cardcolor/remove-image/{{$color->id}}" onclick="return confirm('Click OK to confirm removal of image')">Remove image</a>
+                                @endif
                                 </td>
                               @foreach ($cardtypes[$color->id] as $type)
                                 @if ($type->color_id == $color->id)
-                                  <td>{{$type->title}}</td>
+                                    <td><a href="/cardtype/{{$type->id}}">{{$type->title}}</a><br></td>
+                                  <td style="width:50%">{{$type->instruction}}</td>
                                   <td>
                                     <a href="/cardtype/edit/{{$type->id}}">
                                         <button type="button" class="btn btn-primary">
@@ -52,7 +58,7 @@
                                 Create a new type for this color
                               </td>
                               <td>
-                                <a href="/cardtype/create/{{$type->id}}">
+                                <a href="/cardtype/create/{{$color->id}}">
                                     <button type="button" class="btn btn-primary">
                                         <i class="fa fa-btn fa-pencil-square-o"></i> Create
                                     </button>

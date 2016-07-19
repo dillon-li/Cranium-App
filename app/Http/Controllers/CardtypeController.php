@@ -10,6 +10,7 @@ use App\User;
 use App\CardSet;
 use App\CardColor;
 use App\CardType;
+use App\Card;
 
 class CardtypeController extends Controller
 {
@@ -24,68 +25,60 @@ class CardtypeController extends Controller
 
     public function create(Request $request)
     {
-      if(!file_exists('users/'.$request->user()->username)){
-        File::makeDirectory('users/'.$request->user()->username);
-      }
-      if (isset($request->color_img)){
-        $img = true;
-        $path = 'users/'.$request->user()->username;
-        $filename = str_slug($request->color).'.'.$request->file('color_img')->getClientOriginalExtension();;
-        $contents = $request->file('color_img');
-        $contents->move(base_path().'/public/users/'.$request->user()->username.'/', $filename);
-      }
-      else {
-        $img = false;
-      }
-
-      CardColor::create([
-        'set_id' => $request->set_id,
-        'color' => $request->color,
+      $type = CardType::create([
+        'color_id' => $request->color_id,
         'title' => $request->title,
-        'hasImg' => $img,
+        'instruction' => $request->instruction,
       ]);
 
-      return redirect()->action('CardsetController@viewCardset', $request->set_id);
+      $color = CardColor::find($request->color_id);
+
+      return redirect()->action('CardsetController@viewCardset', $color->set_id);
     }
 
-    public function editPage($cardcolor_id)
+    public function editPage($type_id)
     {
-      $cardcolor = CardColor::where('id', $cardcolor_id)->first();
-      return view('cardcolors.edit')->with(['cardcolor' => $cardcolor]);
+      $cardtype = CardType::where('id', $type_id)->first();
+      $cardcolor = CardColor::where('id', $cardtype->color_id)->first();
+      $items = [
+        'cardtype' => $cardtype,
+        'cardcolor' => $cardcolor
+      ];
+      return view('cardtypes.edit')->with($items);
     }
 
     public function edit(Request $request)
     {
-      $cardcolor = CardColor::where('id', $request->color_id)->first();
+      $cardtype = CardType::where('id', $request->type_id)->first();
 
-      if(!file_exists('users/'.$request->user()->username)){
-        File::makeDirectory('users/'.$request->user()->username);
-      }
-      if (isset($request->color_img)){
-        $img = true;
-        $path = 'users/'.$request->user()->username;
-        $filename = str_slug($request->color).'.'.$request->file('color_img')->getClientOriginalExtension();;
-        $contents = $request->file('color_img');
-        $contents->move(base_path().'/public/users/'.$request->user()->username.'/', $filename);
-      }
-      else {
-        $img = false;
-      }
+      $cardtype->title = $request->title;
+      $cardtype->instruction = $request->instruction;
+      $cardtype->save();
 
-      $cardcolor->color = $request->color;
-      $cardcolor->title = $request->title;
-      $cardcolor->hasImg = $img;
-      $cardcolor->save();
+      $color = CardColor::where('id', $cardtype->color_id)->first();
 
-      return redirect()->action('CardsetController@viewCardset', $cardcolor->set_id);
+      return redirect()->action('CardsetController@viewCardset', $color->set_id);
     }
 
-    public function delete($color_id)
+    public function delete($type_id)
     {
-      $cardcolor = CardColor::where('id', $color_id)->first();
-      $cardcolor->delete();
+      $cardtype = CardType::where('id', $type_id)->first();
+      Card::where('type_id', $type_id)->delete();
+      $cardtype->delete();
 
       return back();
+    }
+
+    public function viewCards($id)
+    {
+      $cardtype = CardType::find($id);
+      $cards = Card::where('type_id', $id)->get();
+      $items = [
+        'cardtype' => $cardtype,
+        'cards' => $cards
+      ];
+
+      return view('cardtypes.individual')->with($items);
     }
 
 }

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use File;
 
+use Auth;
 use App\User;
 use App\CardSet;
 use App\CardColor;
+use App\CardType;
+use App\Card;
 
 class CardcolorController extends Controller
 {
@@ -83,7 +86,26 @@ class CardcolorController extends Controller
     public function delete($color_id)
     {
       $cardcolor = CardColor::where('id', $color_id)->first();
+      $types = CardType::where('color_id', $cardcolor->id)->get();
+      if ($types != null) {
+        foreach ($types as $type) {
+          Card::where('type_id', $type->id)->delete();
+          }
+        CardType::where('color_id', $cardcolor->id)->delete();
+      }
       $cardcolor->delete();
+      return back();
+    }
+
+    public function removeImage($id)
+    {
+      $color = CardColor::where('id', $id)->first();
+      $filename = str_slug($color->color).'.'.'jpg';
+      $fullpath = base_path().'/public/users/'.Auth::user()->username.'/'. $filename;
+      File::delete($fullpath);
+
+      $color->hasImg = false;
+      $color->save();
 
       return back();
     }

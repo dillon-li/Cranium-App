@@ -22,7 +22,7 @@
                             <tr>
                               <td><a href="/cardset/{{$cardset->id}}">{{$cardset->name}}</a></td>
                               <td>
-                                <a href="/cardset/delete/{{$cardset->id}}" onclick="return confirm('Click OK to confirm deletion')">Delete<a>
+                                <a href="/cardset/delete/{{$cardset->id}}" onclick="return confirm('Are you sure you want to delete this entire cardset?')">Delete<a>
                               </td>
                             </tr>
                           @endforeach

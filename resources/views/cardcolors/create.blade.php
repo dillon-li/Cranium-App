@@ -10,6 +10,10 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/cardcolor/create-color') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
+                        The card color does not necessarily mean the color itself, but just the overarching category. For example, the original Cranium game
+                        contains four colors: Red, Blue, Green, and Yellow, corresponding to the 'Datahead', 'Creative Cat', 'Star Perfomrmer', and 'Word Worm'
+                        respectively.
+
                         <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Card Color</label>
 
@@ -39,9 +43,9 @@
                         </div>
 
                         <div class="form-group">
-                          <label class="col-md-4 control-label">Add a picture for your color. Like this creative cat for blue:</label>
+                          <label class="col-md-4 control-label">Add a picture for your color. Like this Star Perfomer for green:</label>
                           <div class="col-md-6">
-                            <img src="{{ url('/images/creative_cat.jpg')}}">
+                            <img src="{{ url('/images/cardimage_ex.jpg')}}">
                           </div>
                         </div>
 

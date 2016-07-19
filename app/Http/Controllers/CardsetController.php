@@ -85,4 +85,10 @@ class CardsetController extends Controller
       return view('cardsets.edit')->with($items);
 
     }
+
+    public function delete($id)
+    {
+      // To be implemented
+      return back();
+    }
 }

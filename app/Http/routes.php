@@ -50,4 +50,7 @@ Route::group(['prefix' => 'cardtype', 'middleware' =>'auth'], function() {
 Route::group(['prefix' => 'card', 'middleware' =>'auth'], function() {
   Route::get('create/{type_id}', 'CardController@createPage');
   Route::post('create-card', 'CardController@create');
+  Route::get('edit/{card_id}', 'CardController@editPage');
+  Route::post('edit', 'CardController@edit');
+  Route::get('delete/{card_id}', 'CardController@delete');
 });

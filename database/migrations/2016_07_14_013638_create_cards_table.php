@@ -20,8 +20,8 @@ class CreateCardsTable extends Migration
           $table->text('question', 65535);
           $table->string('answer');
           $table->boolean('played')->default(0);
-          $table->integer('skips');
-          $table->integer('plays');
+          $table->integer('skips')->default(0);
+          $table->integer('plays')->default(0);
       });
     }
 

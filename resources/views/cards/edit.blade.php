@@ -108,14 +108,14 @@ function nl2br (str, is_xhtml) {
                   <br><br>
                   <hr>
 
-                        <form class="form-horizontal" name="createCardForm" id="createCardForm" role="form" method="POST" action="{{ url('/card/create-card') }}">
+                        <form class="form-horizontal" name="createCardForm" id="createCardForm" role="form" method="POST" action="{{ url('/card/edit') }}">
                             {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Question</label>
 
                             <div class="col-md-6">
-                                <textarea form="createCardForm" name="question" id="question_input">{{old('question')}}</textarea>
+                                <textarea form="createCardForm" name="question" id="question_input">{{$card->question}}</textarea>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -129,7 +129,7 @@ function nl2br (str, is_xhtml) {
                             <label for="name" class="col-md-4 control-label">Hint</label>
 
                             <div class="col-md-6">
-                                <input type="text" name="hint" id="hint_input" value="{{old('hint')}}">
+                                <input type="text" name="hint" id="hint_input" value="{{$card->hint}}">
                                 @if ($errors->has('hint'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('hint') }}</strong>
@@ -142,7 +142,7 @@ function nl2br (str, is_xhtml) {
                             <label for="name" class="col-md-4 control-label">Answer</label>
 
                             <div class="col-md-6">
-                                <input type="text" name="answer" id="answer_input" value="{{old('answer')}}">
+                                <input type="text" name="answer" id="answer_input" value="{{$card->answer}}">
                                 @if ($errors->has('answer'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('answer') }}</strong>
@@ -151,12 +151,12 @@ function nl2br (str, is_xhtml) {
                             </div>
                         </div>
 
-                        <input type="hidden" name="type_id" value="{{$cardtype->id}}" />
+                        <input type="hidden" name="card_id" value="{{$card->id}}" />
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-pencil"></i> Create Card
+                                    <i class="fa fa-btn fa-pencil"></i> Edit Card
                                 </button>
                             </div>
                         </div>

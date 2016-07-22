@@ -12,16 +12,22 @@
                       <table class="table table-bordered">
                         <thead>
                           <tr>
+                            <td>Card Hint (if applicable)</td>
                             <td>Card Question (if applicable)</td>
                             <td>Card Answer</td>
+                            <td>Times Played</td>
+                            <td>Times SKipped</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($cards as $card)
                             <tr>
-                              <td>{{$card->question}}</td>
+                              <td>{{$card->hint}}</td>
+                              <td><?php echo htmlspecialchars_decode($card->question) ?></td>
                               <td>{{$card->answer}}</td>
+                              <td>{{$card->plays}}</td>
+                              <td>{{$card->skips}}</td>
                               <td>
                                 <a href="/card/edit/{{$card->id}}">
                                     <button type="button" class="btn btn-primary">

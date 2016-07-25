@@ -22,6 +22,7 @@
 #hint {
   text-align:center;
   height:25px;
+  font-weight:bolder;
 }
 #question {
   text-align:center;

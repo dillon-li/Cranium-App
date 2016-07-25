@@ -44,6 +44,11 @@
                         </tbody>
                       </table>
                     </div>
+                    <a href="/card/create/{{$cardtype->id}}">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-btn fa-pencil-square-o"></i> Create New Card
+                        </button>
+                    </a>
                   </div>
                 @else
                   <div class="panel-body">

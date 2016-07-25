@@ -35,7 +35,7 @@
                               @foreach ($cardtypes[$color->id] as $type)
                                 @if ($type->color_id == $color->id)
                                     <td><a href="/cardtype/{{$type->id}}">{{$type->title}}</a><br></td>
-                                  <td style="width:50%">{{$type->instruction}}</td>
+                                  <td style="width:50%"><?php echo htmlspecialchars_decode($type->instruction) ?></td>
                                   <td>
                                     <a href="/cardtype/edit/{{$type->id}}">
                                         <button type="button" class="btn btn-primary">

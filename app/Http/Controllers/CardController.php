@@ -26,6 +26,11 @@ class CardController extends Controller
 
     public function create(Request $request)
     {
+      $this->validate($request, [
+        'question' => 'unique:cards',
+        'answer' => 'unique:cards'
+      ]);
+
       Card::create([
         'type_id' => $request->type_id,
         'question' => nl2br($request->question),

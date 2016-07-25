@@ -25,6 +25,11 @@ class CardtypeController extends Controller
 
     public function create(Request $request)
     {
+      $this->validate($request, [
+        'title' => 'required|unique:cardtypes',
+        'instruction' => 'required|unique:cardtypes'
+      ]);
+
       $type = CardType::create([
         'color_id' => $request->color_id,
         'title' => $request->title,
@@ -49,6 +54,11 @@ class CardtypeController extends Controller
 
     public function edit(Request $request)
     {
+      $this->validate($request, [
+        'title' => 'required',
+        'instruction' => 'required'
+      ]);
+
       $cardtype = CardType::where('id', $request->type_id)->first();
 
       $cardtype->title = $request->title;

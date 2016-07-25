@@ -12,19 +12,20 @@
   font-weight:bold;
   text-align:center;
   height:400px;
+  background-size: 300px 400px;
   background-image: url({{'/users/'.Auth::user()->username.'/'.str_slug($color->color).'.jpg' }});
 }
 #instructions {
   text-align:center;
-  height:150px;
+  height:90px;
 }
 #hint {
   text-align:center;
-  height:50px;
+  height:25px;
 }
 #question {
   text-align:center;
-  height:150px;
+  height:235px;
   z-index:1;
 }
 #title {
@@ -76,6 +77,11 @@ function nl2br (str, is_xhtml) {
     }
   });
 });
+
+  $(document).ready(function () {
+    $('#question_input').trigger("keyup");
+    $('#hint_input').trigger("keyup");
+  })
 </script>
 
 

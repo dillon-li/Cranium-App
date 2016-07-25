@@ -54,3 +54,7 @@ Route::group(['prefix' => 'card', 'middleware' =>'auth'], function() {
   Route::post('edit', 'CardController@edit');
   Route::get('delete/{card_id}', 'CardController@delete');
 });
+
+Route::group(['prefix' => 'seeding', 'middleware' =>'auth'], function() {
+  Route::get('{id}/basic', 'SeedController@basic');
+});

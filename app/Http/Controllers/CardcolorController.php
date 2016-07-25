@@ -27,6 +27,11 @@ class CardcolorController extends Controller
 
     public function create(Request $request)
     {
+      $this->validate($request, [
+        'title' => 'required|unique:cardcolors',
+        'color' => 'required|unique:cardcolors'
+      ]);
+
       if(!file_exists('users/'.$request->user()->username)){
         File::makeDirectory('users/'.$request->user()->username);
       }
@@ -59,6 +64,11 @@ class CardcolorController extends Controller
 
     public function edit(Request $request)
     {
+      $this->validate($request, [
+        'title' => 'required',
+        'color' => 'required'
+      ]);
+
       $cardcolor = CardColor::where('id', $request->color_id)->first();
 
       if(!file_exists('users/'.$request->user()->username)){

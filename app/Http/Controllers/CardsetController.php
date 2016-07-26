@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Storage;
 
+use App\Http\Controllers\CardcolorController as CardcolorController;
 use App\User;
 use App\CardSet;
 use App\CardColor;
@@ -88,7 +89,14 @@ class CardsetController extends Controller
 
     public function delete($id)
     {
-      // To be implemented
+      $cardset = CardSet::find($id);
+      $cardcolor = CardColor::where('set_id',$cardset->id)->get();
+      if ($cardcolor != null) {
+        foreach ($cardcolor as $color) {
+          CardcolorController::delete($color->id);
+        }
+      }
+      $cardset->delete();
       return back();
     }
 }

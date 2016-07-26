@@ -23,7 +23,16 @@
                             <tr>
                               <td><a href="/cardset/{{$cardset->id}}">{{$cardset->name}}</a></td>
                               <td>
-                                <a href="/cardset/delete/{{$cardset->id}}" onclick="return confirm('Are you sure you want to delete this entire cardset?')">Delete<a>
+                                <a href="/play/{{$cardset->id}}">
+                                  <button type="button" class="btn btn-primary">
+                                      <i class="fa fa-btn fa-mouse-pointer"></i> Play
+                                  </button>
+                                </a>
+                                <a href="/cardset/delete/{{$cardset->id}}" onclick="return confirm('Are you sure you want to delete this entire cardset?')">
+                                  <button type="button" class="btn btn-primary">
+                                      <i class="fa fa-btn fa-trash"></i> Delete
+                                  </button>
+                                </a>
                               </td>
                               <td>
                                 <a href="/seeding/{{$cardset->id}}/basic">

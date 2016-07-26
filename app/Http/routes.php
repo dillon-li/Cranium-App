@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Cardset CRUD
 Route::group(['prefix' => 'cardset', 'middleware' =>'auth'], function() {
   Route::get('/', 'CardsetController@index');
   Route::get('create', 'CardsetController@createPage');
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'cardset', 'middleware' =>'auth'], function() {
   Route::get('delete/{set_id}', 'CardsetController@delete');
 });
 
+// Cardcolor CRUD
 Route::group(['prefix' => 'cardcolor', 'middleware' =>'auth'], function() {
   Route::get('create/{cardset_id}', 'CardcolorController@createPage');
   Route::post('create-color', 'CardColorController@create');
@@ -38,6 +40,7 @@ Route::group(['prefix' => 'cardcolor', 'middleware' =>'auth'], function() {
   Route::get('remove-image/{color_id}', 'CardcolorController@removeImage');
 });
 
+// Cardtype CRUD
 Route::group(['prefix' => 'cardtype', 'middleware' =>'auth'], function() {
   Route::get('create/{color_id}', 'CardtypeController@createPage');
   Route::post('create-type', 'CardtypeController@create');
@@ -47,6 +50,7 @@ Route::group(['prefix' => 'cardtype', 'middleware' =>'auth'], function() {
   Route::get('{type_id}', 'CardtypeController@viewCards');
 });
 
+// Card CRUD
 Route::group(['prefix' => 'card', 'middleware' =>'auth'], function() {
   Route::get('create/{type_id}', 'CardController@createPage');
   Route::post('create-card', 'CardController@create');
@@ -55,6 +59,14 @@ Route::group(['prefix' => 'card', 'middleware' =>'auth'], function() {
   Route::get('delete/{card_id}', 'CardController@delete');
 });
 
+// Basic seeder - will add different ones later
 Route::group(['prefix' => 'seeding', 'middleware' =>'auth'], function() {
   Route::get('{id}/basic', 'SeedController@basic');
+});
+
+// Game flow stuff
+Route::group(['prefix' => 'play', 'middleware' =>'auth'], function() {
+  Route::get('{cardset_id}', 'GameController@start');
+  Route::post('/', 'GameController@newCard');
+  Route::post('/skip', 'GameController@skip');
 });

@@ -93,7 +93,7 @@ class CardcolorController extends Controller
       return redirect()->action('CardsetController@viewCardset', $cardcolor->set_id);
     }
 
-    public function delete($color_id)
+    public static function delete($color_id)
     {
       $cardcolor = CardColor::where('id', $color_id)->first();
       $types = CardType::where('color_id', $cardcolor->id)->get();

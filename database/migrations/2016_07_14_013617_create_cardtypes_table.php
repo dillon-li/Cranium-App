@@ -17,6 +17,7 @@ class CreateCardtypesTable extends Migration
           $table->integer('color_id')->unsigned();
           $table->string('title');
           $table->text('instruction', 65535);
+          $table->boolean('clubs');
       });
     }
 

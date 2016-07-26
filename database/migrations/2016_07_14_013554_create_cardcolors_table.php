@@ -17,6 +17,7 @@ class CreateCardcolorsTable extends Migration
           $table->integer('set_id')->unsigned();
           $table->string('color');
           $table->string('title');
+          $table->boolean('hasImg');
       });
     }
 

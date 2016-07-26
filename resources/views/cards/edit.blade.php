@@ -26,13 +26,13 @@
 }
 #question {
   text-align:center;
-  height:235px;
+  height:225px;
   z-index:1;
 }
 #title {
   text-align:center;
   height:25%;
-  background-color: red;
+  background-color: {{$color->color}};
   color: white;
   font-size:20px;
   border-radius:25px;
@@ -100,7 +100,7 @@ function nl2br (str, is_xhtml) {
 
                     <div class="w3-container w3-white">
                       <p id="title"> {{$cardtype->title}} </p>
-                      <p id="instructions">{{$cardtype->instruction}}</p>
+                      <p id="instructions"><?php echo htmlspecialchars_decode($cardtype->instruction) ?></p>
                       <p id="hint">Hint Goes Here (if applicable)</p>
                       <div id="question" class="note">Question Goes Here (if applicable)</p>
                     </div>

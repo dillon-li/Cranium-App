@@ -242,7 +242,7 @@ class SeedController extends Controller
       $split = explode('|||||', $string);
       $hints = explode('|', $split['0']);
       $answers = explode('|', $split['1']);
-      for ($x = 0; $x < count($questions); $x++) {
+      for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['CLOODLE']->id,
           'hint' => $hints[$x],
@@ -257,7 +257,7 @@ class SeedController extends Controller
       $split = explode('|||||', $string);
       $hints = explode('|', $split['0']);
       $answers = explode('|', $split['1']);
-      for ($x = 0; $x < count($questions); $x++) {
+      for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['SENSOSKETCH']->id,
           'hint' => $hints[$x],
@@ -272,7 +272,7 @@ class SeedController extends Controller
       $split = explode('|||||', $string);
       $hints = explode('|', $split['0']);
       $answers = explode('|', $split['1']);
-      for ($x = 0; $x < count($questions); $x++) {
+      for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['SCULPTORADES']->id,
           'hint' => $hints[$x],
@@ -368,6 +368,60 @@ class SeedController extends Controller
         Card::create([
           'type_id' => $cardtype['MINDMELD']->id,
           'question' => $questions[$x],
+        ]);
+      }
+      fclose($file);
+
+      // Cameo
+      $file = fopen("seedfiles/cameos.txt","r");
+      $string = fread($file, filesize("seedfiles/cameos.txt"));
+      $split = explode('|||||', $string);
+      $questions = explode('|', $split['0']);
+      $answers = explode('|', $split['1']);
+      for ($x = 0; $x < count($questions); $x++) {
+        Card::create([
+          'type_id' => $cardtype['CAMEO']->id,
+          'question' => $questions[$x],
+          'answer' => $answers[$x]
+        ]);
+      }
+      fclose($file);
+
+      // Humdinger
+      $file = fopen("seedfiles/humdingers.txt","r");
+      $string = fread($file, filesize("seedfiles/humdingers.txt"));
+      $answers = explode(PHP_EOL, $string);
+      for ($x = 0; $x < count($answers); $x++) {
+        Card::create([
+          'type_id' => $cardtype['HUMDINGER']->id,
+          'answer' => $answers[$x]
+        ]);
+      }
+      fclose($file);
+
+      // Copycat
+      $file = fopen("seedfiles/copycats.txt","r");
+      $string = fread($file, filesize("seedfiles/copycats.txt"));
+      $answers = explode(PHP_EOL, $string);
+      for ($x = 0; $x < count($answers); $x++) {
+        Card::create([
+          'type_id' => $cardtype['COPYCAT']->id,
+          'answer' => $answers[$x]
+        ]);
+      }
+      fclose($file);
+
+      // Sideshow
+      $file = fopen("seedfiles/sideshows.txt","r");
+      $string = fread($file, filesize("seedfiles/sideshows.txt"));
+      $split = explode('|||||', $string);
+      $questions = explode('|', $split['0']);
+      $answers = explode('|', $split['1']);
+      for ($x = 0; $x < count($questions); $x++) {
+        Card::create([
+          'type_id' => $cardtype['SIDESHOW']->id,
+          'question' => $questions[$x],
+          'answer' => $answers[$x]
         ]);
       }
       fclose($file);

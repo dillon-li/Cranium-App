@@ -27,7 +27,9 @@
                               </td>
                               <td>
                                 <a href="/seeding/{{$cardset->id}}/basic">
-                                  <button type="button">Basic Seeder
+                                  <button type="button" class="btn btn-primary">
+                                      <i class="fa fa-btn fa-download"></i> Basic Seeder
+                                  </button>
                                 </a>
                               </td>
                             </tr>

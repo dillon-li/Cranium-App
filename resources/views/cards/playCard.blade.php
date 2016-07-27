@@ -95,6 +95,16 @@ $('#showAnswer').click(function(){
                   </div>
                 </div>
                   <br><br>
+                  @if (isset($club) and ($club == true))
+                    <div style="float:left">
+                        <img src="/images/club.jpg">
+                    </div>
+                    <div>
+                      This is a club cranium, meaning <b>Everyone</b> plays! Winners get an immediate <b>bonus roll</b>. And the team
+                      whose turn this was gets another card after the winner's bonus roll
+                    </div>
+                    <br><br><br>
+                  @endif
                   <hr>
                   @endif
 
@@ -114,6 +124,9 @@ $('#showAnswer').click(function(){
                             </div>
 
                             <input type="hidden" name="cardset_id" value="{{$cardset->id}}" />
+                            @if (isset($card))
+                              <input type="hidden" name="card_id" value="{{$card->id}}">
+                            @endif
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
@@ -129,6 +142,7 @@ $('#showAnswer').click(function(){
                             @if (isset($card))
                               <input type="hidden" name="cardcolor" value="{{$color->color}}" />
                               <input type="hidden" name="cardset_id" value="{{$cardset->id}}" />
+                              <input type="hidden" name="card_id" value="{{$card->id}}">
                               <div class="form-group">
                                   <div class="col-md-6 col-md-offset-4">
                                       <button class="btn btn-primary">

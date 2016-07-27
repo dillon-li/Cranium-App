@@ -183,6 +183,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['FACTOID']->id,
+          'set_id' => $id,
           'question' => nl2br($questions[$x]),
           'answer' => $answers[$x]
         ]);
@@ -198,6 +199,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['SELECTAQUEST']->id,
+          'set_id' => $id,
           'question' => nl2br($questions[$x]),
           'answer' => $answers[$x]
         ]);
@@ -213,6 +215,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['POLYGRAPH']->id,
+          'set_id' => $id,
           'question' => nl2br($questions[$x]),
           'answer' => $answers[$x]
         ]);
@@ -229,6 +232,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['ODD COUPLE']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'question' => nl2br($questions[$x]),
           'answer' => $answers[$x]
@@ -245,6 +249,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['CLOODLE']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'answer' => $answers[$x]
         ]);
@@ -260,6 +265,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['SENSOSKETCH']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'answer' => $answers[$x]
         ]);
@@ -275,6 +281,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['SCULPTORADES']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'answer' => $answers[$x]
         ]);
@@ -290,6 +297,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['SPELLBOUND']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
           'answer' => $answers[$x]
         ]);
@@ -305,6 +313,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['TEAM GNILLEPS']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
           'answer' => $answers[$x]
         ]);
@@ -321,6 +330,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['ZELPUZ']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'question' => $questions[$x],
           'answer' => $answers[$x]
@@ -338,6 +348,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['BLANKOUT']->id,
+          'set_id' => $id,
           'hint' => $hints[$x],
           'question' => $questions[$x],
           'answer' => $answers[$x]
@@ -354,6 +365,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['LEXICON']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
           'answer' => $answers[$x]
         ]);
@@ -367,6 +379,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['MINDMELD']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
         ]);
       }
@@ -381,6 +394,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['CAMEO']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
           'answer' => $answers[$x]
         ]);
@@ -394,6 +408,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['HUMDINGER']->id,
+          'set_id' => $id,
           'answer' => $answers[$x]
         ]);
       }
@@ -406,6 +421,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($answers); $x++) {
         Card::create([
           'type_id' => $cardtype['COPYCAT']->id,
+          'set_id' => $id,
           'answer' => $answers[$x]
         ]);
       }
@@ -420,6 +436,7 @@ class SeedController extends Controller
       for ($x = 0; $x < count($questions); $x++) {
         Card::create([
           'type_id' => $cardtype['SIDESHOW']->id,
+          'set_id' => $id,
           'question' => $questions[$x],
           'answer' => $answers[$x]
         ]);

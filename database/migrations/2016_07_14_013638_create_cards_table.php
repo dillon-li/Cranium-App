@@ -15,6 +15,7 @@ class CreateCardsTable extends Migration
       Schema::create('cards', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('type_id')->unsigned();
+          $table->integer('set_id')->unsigned();
           $table->string('hint');
           $table->text('instruction', 65535);
           $table->text('question', 65535);

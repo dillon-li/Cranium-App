@@ -17,6 +17,9 @@ class GameController extends Controller
     {
       $cardset = CardSet::find($id);
       $colors = CardColor::where('set_id', $id)->get();
+      Card::where('set_id', $cardset->id)
+            ->where('played', true)
+            ->update(['played' => false]);
       $items = [
         'cardset' => $cardset,
         'colors' => $colors
@@ -28,13 +31,24 @@ class GameController extends Controller
     {
       $color = CardColor::where('id', $request->color)->first();
       $cardtype = CardType::where('color_id', $color->id)->get()->random();
-      $card = Card::where('type_id', $cardtype->id)->get()->random();
+      $card = Card::where('type_id', $cardtype->id)->where('played', false)->get()->random();
 
       $colors = CardColor::where('set_id', $request->cardset_id)->get();
       $cardset = CardSet::find($request->cardset_id);
 
-      if (isset($request->card)) {
-        // do some logic
+      if (isset($request->card_id)) {
+        $card_played = Card::find($request->card_id);
+        $card_played->played = true;
+        $card_played->plays = $card_played->plays + 1;
+        $card_played->save();
+      }
+
+      $club = false;
+      if ($cardtype->clubs) {
+        $rand = rand(1,1000);
+        if ($rand <= 300) {
+          $club = true;
+        }
       }
 
       $items = [
@@ -42,9 +56,19 @@ class GameController extends Controller
         'cardtype' => $cardtype,
         'card' => $card,
         'colors' => $colors,
-        'cardset' => $cardset
+        'cardset' => $cardset,
+        'club' => $club
       ];
 
       return view('cards.playCard')->with($items);
+    }
+
+    public function skip(Request $request)
+    {
+      $card = Card::find($request->card_id);
+      $card->played = true;
+      $card->skips = $card->skips + 1;
+      $card->save();
+
     }
 }

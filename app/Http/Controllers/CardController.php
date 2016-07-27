@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Card;
 use App\Cardtype;
 use App\CardColor;
+use App\CardSet;
 
 class CardController extends Controller
 {
@@ -31,8 +32,13 @@ class CardController extends Controller
         'answer' => 'unique:cards'
       ]);
 
+      $type = CardType::find($request->type_id);
+      $color = CardColor::find($type->color_id);
+      $set = CardSet::find($color->set_id);
+
       Card::create([
         'type_id' => $request->type_id,
+        'set_id' => $set->id,
         'question' => nl2br($request->question),
         'hint' => $request->hint,
         'answer' => $request->answer

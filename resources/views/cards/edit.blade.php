@@ -6,6 +6,7 @@
 #image_left {
   float:left;
   width:50%;
+  position:relative;
 }
 .img_div {
   color:white;
@@ -95,11 +96,16 @@ function nl2br (str, is_xhtml) {
 
                   <div class="w3-card-16">
                     <div id="image_left" class="w3-container">
-                      <div class="img_div"> <p id="imgtitle">{{$color->title}} </p></div>
+                      <div class="img_div" style="position:relative"> <p id="imgtitle">{{$color->title}} </p></div>
+
                     </div>
 
                     <div class="w3-container w3-white">
-                      <p id="title"> {{$cardtype->title}} </p>
+                      @if ($color->color == 'Yellow')
+                        <p id="title" style="background-color: {{$color->color}}; color:black"> {{$cardtype->title}} </p>
+                      @else
+                        <p id="title" style="background-color: {{$color->color}}"> {{$cardtype->title}} </p>
+                      @endif
                       <p id="instructions"><?php echo htmlspecialchars_decode($cardtype->instruction) ?></p>
                       <p id="hint">Hint Goes Here (if applicable)</p>
                       <div id="question" class="note">Question Goes Here (if applicable)</p>
@@ -175,4 +181,7 @@ function nl2br (str, is_xhtml) {
         </div>
     </div>
 </div>
+</div>
+
+
 @endsection

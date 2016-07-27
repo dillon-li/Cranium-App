@@ -34,6 +34,7 @@ class CardtypeController extends Controller
         'color_id' => $request->color_id,
         'title' => $request->title,
         'instruction' => $request->instruction,
+        'clubs' => $request->clubs
       ]);
 
       $color = CardColor::find($request->color_id);
@@ -56,13 +57,14 @@ class CardtypeController extends Controller
     {
       $this->validate($request, [
         'title' => 'required',
-        'instruction' => 'required'
+        'instruction' => 'required',
       ]);
 
       $cardtype = CardType::where('id', $request->type_id)->first();
 
       $cardtype->title = $request->title;
       $cardtype->instruction = $request->instruction;
+      $cardtype->clubs = $request->clubs;
       $cardtype->save();
 
       $color = CardColor::where('id', $cardtype->color_id)->first();

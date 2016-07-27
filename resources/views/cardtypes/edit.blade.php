@@ -67,6 +67,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                          <label class="col-md-4 control-label"></label>
+                            <div class="col-md-7">
+                              @if (isset($cardtype->clubs) and ($cardtype->clubs == true))
+                                <input type="checkbox" name="clubs" value= 1 checked="checked"/>Allow Club Craniums
+                              @else
+                                <input type="checkbox" name="clubs" value= 1 />Allow Club Craniums
+                              @endif
+                            </div>
+                          </div>
+
                         <input type="hidden" name="type_id" value="{{$cardtype->id}}" />
 
                         <div class="form-group">

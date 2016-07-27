@@ -32,7 +32,7 @@
 #title {
   text-align:center;
   height:25%;
-  background-color: red;
+  background-color: {{$color->color}};;
   color: white;
   font-size:20px;
   border-radius:25px;
@@ -94,7 +94,11 @@ function nl2br (str, is_xhtml) {
                     </div>
 
                     <div class="w3-container w3-white">
-                      <p id="title"> {{$cardtype->title}} </p>
+                      @if ($color->color == 'Yellow')
+                        <p id="title" style="background-color: {{$color->color}}; color:black"> {{$cardtype->title}} </p>
+                      @else
+                        <p id="title" style="background-color: {{$color->color}}"> {{$cardtype->title}} </p>
+                      @endif
                       <p id="instructions">{{$cardtype->instruction}}</p>
                       <p id="hint">Hint Goes Here (if applicable)</p>
                       <div id="question" class="note">Question Goes Here (if applicable)</p>

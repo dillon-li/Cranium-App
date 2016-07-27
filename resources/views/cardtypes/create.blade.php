@@ -65,6 +65,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                          <label class="col-md-4 control-label"></label>
+                            <div class="col-md-7">
+                              <input type="checkbox" name="clubs" value= 1 />Allow Club Craniums
+                            </div>
+                          </div>
+
                         <input type="hidden" name="color_id" value="{{$cardcolor->id}}" />
 
                         <div class="form-group">

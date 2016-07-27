@@ -75,6 +75,7 @@
                               @else
                                 <input type="checkbox" name="clubs" value= 1 />Allow Club Craniums
                               @endif
+                              <span class="glyphicon glyphicon-question-sign" id="clubs" data-placement="right" title="Club Craniums will appear periodically and allow all teams to participate. The winning team will get an immediate bonus roll and then the team whose turn it was gets another card and turn."</span>
                             </div>
                           </div>
 
@@ -87,6 +88,11 @@
                                 </button>
                             </div>
                         </div>
+
+                        <script>
+                          $("#clubs").tooltip();
+                        </script>
+                        
                     </form>
                 </div>
             </div>

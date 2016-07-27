@@ -115,8 +115,8 @@ $('#showAnswer').click(function(){
 
                                 <div class="col-md-6">
                                     <select class="form-control" name="color">
-                                      @foreach ($colors as $color)
-                                        <option name="color" value="{{$color['id']}}">{{$color->color}}</option>
+                                      @foreach ($colors as $color_picked)
+                                        <option name="color" value="{{$color['id']}}">{{$color_picked->color}}</option>
                                       @endforeach
                                     </select>
                                 </div>
@@ -140,7 +140,7 @@ $('#showAnswer').click(function(){
                           <form class="form-horizontal" name="skipCard" role="form" method="POST" action="{{ url('/play/skip') }}">
                               {{ csrf_field() }}
                             @if (isset($card))
-                              <input type="hidden" name="cardcolor" value="{{$color->color}}" />
+                              <input type="hidden" name="cardcolor" value="{{$color->id}}" />
                               <input type="hidden" name="cardset_id" value="{{$cardset->id}}" />
                               <input type="hidden" name="card_id" value="{{$card->id}}">
                               <div class="form-group">

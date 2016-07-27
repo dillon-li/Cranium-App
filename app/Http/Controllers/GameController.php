@@ -46,7 +46,7 @@ class GameController extends Controller
       $club = false;
       if ($cardtype->clubs) {
         $rand = rand(1,1000);
-        if ($rand <= 300) {
+        if ($rand <= 333) {
           $club = true;
         }
       }
@@ -65,10 +65,35 @@ class GameController extends Controller
 
     public function skip(Request $request)
     {
-      $card = Card::find($request->card_id);
-      $card->played = true;
-      $card->skips = $card->skips + 1;
-      $card->save();
+      $card_skipped = Card::find($request->card_id);
+      $card_skipped->played = true;
+      $card_skipped->skips = $card_skipped->skips + 1;
+      $card_skipped->save();
 
+      $color = CardColor::find($request->cardcolor);
+      $cardtype = CardType::where('color_id', $color->id)->get()->random();
+      $card = Card::where('type_id', $cardtype->id)->where('played', false)->get()->random();
+
+      $cardset = CardSet::find($request->cardset_id);
+      $colors = CardColor::where('set_id', $request->cardset_id)->get();
+
+      $club = false;
+      if ($cardtype->clubs) {
+        $rand = rand(1,1000);
+        if ($rand <= 333) {
+          $club = true;
+        }
+      }
+
+      $items = [
+        'color' => $color,
+        'cardtype' => $cardtype,
+        'card' => $card,
+        'colors' => $colors,
+        'cardset' => $cardset,
+        'club' => $club
+      ];
+
+      return view('cards.playCard')->with($items);
     }
 }

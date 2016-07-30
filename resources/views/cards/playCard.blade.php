@@ -116,11 +116,10 @@ $('#showAnswer').click(function(){
                                 <div class="col-md-6">
                                     <select class="form-control" name="color">
                                       @foreach ($colors as $color_picked)
-                                        <option name="color" value="{{$color['id']}}">{{$color_picked->color}}</option>
+                                        <option name="color" value="{{$color_picked['id']}}">{{$color_picked->color}}</option>
                                       @endforeach
                                     </select>
                                 </div>
-
                             </div>
 
                             <input type="hidden" name="cardset_id" value="{{$cardset->id}}" />

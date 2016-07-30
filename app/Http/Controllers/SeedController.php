@@ -10,6 +10,7 @@ use App\CardColor;
 use App\CardType;
 use App\Card;
 use Auth;
+use File;
 
 class SeedController extends Controller
 {

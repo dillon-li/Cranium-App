@@ -4,7 +4,8 @@ AC/DC- Back In Black
 AC/DC-Highway To Hell
 AC/DC-Shook Me All Night Long
 Ace of Base- The Sign
-Adele-Rolling In the Deep
+Adele- Rolling In the Deep
+Adele - Hello
 Alannah Myles- Black Velvet
 Aerosmith- Dream On
 Aerosmith- Sweet Emotion
@@ -34,7 +35,6 @@ Belinda Carlisle- I Get Weak
 Berlin- The Masquerade
 Beyonce&Shakira- Beautiful Liar 
 Billy Idol- White Wedding
-Billy Joel- It's Still Rock And Roll To Me
 Billy Joel- Uptown Girl
 Black Sabbath- Crazy Train
 Black Sabbath- War Pigs
@@ -260,8 +260,6 @@ Train - Hey Soul Sister
 Train - Drops of Jupiter
 Troggs- Wild Thing
 Twisted Sister- We're Not Gonna Take It
-U2- Pride
-U2- Running to Stand Stand
 U2- With or Without You
 Van Halen- Hot for Teacher
 Van Morrison- Brown Eyed Girl
@@ -275,3 +273,8 @@ Wicked- Defying Gravity
 Wild Cherry- Play That Funky Music White Boy
 LMFAO - Party Rock Anthem
 Charlie Puth - One Call Away
+Garth Brooks - Friends in Low Places
+21 Pilots - House of Gold
+21 Pilots - Stressed Out
+Panic! At the Disco - I Write Sins Not Tragedies
+Lukas Graham - 7 Years

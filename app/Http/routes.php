@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function() {
+  return view('about');
+});
+
 // Cardset CRUD
 Route::group(['prefix' => 'cardset', 'middleware' =>'auth'], function() {
   Route::get('/', 'CardsetController@index');

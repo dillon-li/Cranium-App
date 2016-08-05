@@ -99,7 +99,7 @@ function nl2br (str, is_xhtml) {
                       @else
                         <p id="title" style="background-color: {{$color->color}}"> {{$cardtype->title}} </p>
                       @endif
-                      <p id="instructions">{{$cardtype->instruction}}</p>
+                      <p id="instructions"> <?php echo htmlspecialchars_decode($cardtype->instruction); ?></p>
                       <p id="hint">Hint Goes Here (if applicable)</p>
                       <div id="question" class="note">Question Goes Here (if applicable)</p>
                     </div>
